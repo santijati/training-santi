@@ -10,5 +10,5 @@
     'data':['security/ir.model.access.csv',
             'views/employee_family_view.xml',
             'views/employee_family_menus.xml',
-            ],
+        ],
 }

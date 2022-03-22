@@ -18,4 +18,4 @@ class EmployeeFamily(models.Model):
             'view_id':view_id.id,
             'res_id':self.id,
             'domain':[('employee_id','=',self.employee_id.id)]
-            }
+        }
