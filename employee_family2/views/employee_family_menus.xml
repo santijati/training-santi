@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="employee_family.menu_employee_family" model="ir.ui.menu">
+             <field name="parent_id" eval="ref('hr.menu_hr_root')"/>
+        </record>
+    </data>
+</odoo>

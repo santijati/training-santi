@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_employee_form_view" model="ir.ui.view" >
+             <field name="name">hr_employee_form_view</field>
+             <field name="model">hr.employee</field>
+             <field name="inherit_id" ref="hr.view_employee_form" />
+             <field name="arch" type="xml">
+                <xpath expr='//field[@name="parent_id"]' position="after">
+                    <field name="id" invisible='1' />
+                    <field name="ayah" 
+                        domain="[('family_relation', '=', 'ayah'), ('employee_id', '=', id)]" 
+                        options="{'no_create_edit': True}" /> 
+                </xpath>
+                <notebook position="inside">
+                    <page id="family_employee" string="Family">
+                        <field name="anggota_keluarga" 
+                            context="{'tree_view_ref':'employee_family.employee_family_list_view',}" />
+                    </page>
+                </notebook>
+             </field>
+        </record>
+
+    </data>
+</odoo>
