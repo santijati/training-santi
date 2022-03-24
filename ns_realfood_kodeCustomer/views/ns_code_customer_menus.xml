@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_code_customer" model="ir.actions.act_window">
+             <field name="name">Customer Type </field>
+            <field name="res_model">ns.code.customer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_code_customer"
+        name="Customer Type"
+        sequence="3"
+        parent="sale.menu_sale_config"
+        action="action_code_customer"/>
+    </data>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <!-- listview -->
+        <record id="code_customer_list_view" model="ir.ui.view">
+            <field name="name">code.customer.list.view</field>
+            <field name="model">ns.code.customer</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ns_name"/>
+                    <field name="ns_mode"/>
+                    <field name="ns_code"/>
+                </tree>
+            </field>
+        </record>
+    <!--form view-->
+        <record id="code_customer_form_view" model="ir.ui.view">
+            <field name="name">code.customer.form.view</field>
+            <field name="model">ns.code.customer</field>
+            <field name="arch" type="xml">
+                <form string="Code Type">
+                    <sheet>
+                        <group>
+                        <field name="ns_name"/>
+                        <field name="ns_mode" widget="radio"/>
+                        <field name="ns_code" attrs="{'invisible':[('ns_mode', '!=', 'single')]}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+	<record id="res_partner_form_view" model="ir.ui.view" >
+             <field name="name">res_partner_form_view</field>
+             <field name="model">res.partner</field>
+             <field name="inherit_id" ref="base.view_partner_form" />
+             <field name="arch" type="xml">
+                <xpath expr='//field[@name="category_id"]' position="after">
+                    <field name="id" invisible='1' />
+                    <field name="ns_type"  options="{'no_create_edit': True}"/> 
+ 		 <field name="ns_code_type" attrs="{'readonly': [('ns_code_type','!=','')]}"/>  
+                </xpath>
+             </field>
+        </record>
+        </data>
+</odoo>
