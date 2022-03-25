@@ -39,7 +39,7 @@
                     <field name="id" invisible='1' />
                     <field name="ns_type"  options="{'no_create_edit': True}"/>
                     <field name="ns_code_type" invisible='1'/> 
- 		            <field name="ns_code" attrs="{'readonly': [('ns_code_type','=','single')]}"/>
+ 		            <field name="ns_code" force_save='1' attrs="{'readonly': [('ns_code_type','=','single')]}"/>
                 </xpath>
              </field>
         </record>
