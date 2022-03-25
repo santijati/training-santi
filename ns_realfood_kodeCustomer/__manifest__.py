@@ -6,7 +6,7 @@
     'website':"http://www.nurosoft.id",
     'category':'sales',
     'version':'13.0.1.0',
-    'depends':['base','sale'],
+    'depends':['base','sale_management'],
     'data':['security/ir.model.access.csv',
             'views/ns_code_customer_view.xml',
             'views/ns_code_customer_menus.xml',

@@ -37,8 +37,9 @@
              <field name="arch" type="xml">
                 <xpath expr='//field[@name="category_id"]' position="after">
                     <field name="id" invisible='1' />
-                    <field name="ns_type"  options="{'no_create_edit': True}"/> 
- 		 <field name="ns_code_type" attrs="{'readonly': [('ns_code_type','!=','')]}"/>  
+                    <field name="ns_type"  options="{'no_create_edit': True}"/>
+                    <field name="ns_code_type" invisible='1'/> 
+ 		            <field name="ns_code" attrs="{'readonly': [('ns_code_type','=','single')]}"/>
                 </xpath>
              </field>
         </record>
