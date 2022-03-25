@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_kodecust,access.kodecust,model_ns_realfood_codecust,,1,1,1,1
+access_kodecust,access.kodecust,model_ns_code_customer,,1,1,1,1
