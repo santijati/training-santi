@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <!-- listview
+        <record id="stock_card_list_view" model="ir.ui.view">
+            <field name="name">stock.card.list.view</field>
+            <field name="model">ns.stock.card</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ns_prod"/>
+                     <field name="ns_loc"/>
+                    <field name="with_internal_transfer"/>
+                    <field name="ns_start"/>
+                    <field name="ns_end"/>
+                </tree>
+            </field>
+        </record> -->
+     <!--form view-->
+        <record id="stock_card_form_view" model="ir.ui.view">
+            <field name="name">stock.card.form.view</field>
+            <field name="model">ns.stock.card</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <form string="Stock Card" >
+                    <sheet>
+                        <group col="4">
+                        <field name="ns_prod" domain="[('categ_id', 'in', [9,10])]"/>
+                        <field name="ns_start"/>
+                        <field name="ns_loc" widget="radio"/>
+                        <field name="ns_end"/>
+                        <field name="ns_stockloc" domain="[('usage', '=', 'internal')]" attrs="{'invisible':[('ns_loc', '=', 'all')]}"/>
+                        <field name="with_internal_transfer" attrs="{'invisible':[('ns_loc', '=', 'select')]}"/>
+                        </group>
+                        <footer>
+                        <button string="Print" name="" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" class="btn-default"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>	
+        </data>
+</odoo>
