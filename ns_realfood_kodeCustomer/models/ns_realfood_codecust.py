@@ -15,8 +15,6 @@ class NsCustomer(models.Model):
     _inherit = 'res.partner'
     ns_type = fields.Many2one(
         'ns.code.customer', string='Customer Type', ondelete='restrict')
-    ns_cust_id = fields.One2many(
-        'res.partner', 'ns_type', string="Customer Code")
     ns_code_type = fields.Char(string='Customer Code')
     ns_code = fields.Char(string='Customer Code', default='')
 
