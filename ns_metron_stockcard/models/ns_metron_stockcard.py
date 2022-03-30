@@ -32,7 +32,7 @@ class StockReport(models.AbstractModel):
         stock = []
         if obj.ns_loc == 'select':
             for rec in obj_stock:
-                if obj_stock.location_id == obj.ns_stockloc.id or obj_stock.location_dest_id == obj.ns_stockloc.id:
+                if rec.location_id.id == obj.ns_stockloc.id or rec.location_dest_id.id == obj.ns_stockloc.id:
                     stock.append({'reference': rec.reference, 'date': rec.date, 'from': rec.location_id.name, 'to': rec.location_dest_id.name,
                                   'partner': rec.company_id.name, 'in': rec.product_uom_qty, 'out': rec.qty_done, 'balance': rec.product_qty})
         else:
