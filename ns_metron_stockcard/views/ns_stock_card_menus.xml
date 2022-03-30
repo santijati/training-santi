@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="action_stock_card" model="ir.actions.act_window">
+       <record id="action_stock_card" model="ir.actions.act_window">
             <field name="name">Stock Card </field>
             <field name="type">ir.actions.act_window</field>         
             <field name="res_model">ns.stock.card</field>

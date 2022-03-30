@@ -1,22 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-    <!-- listview
-        <record id="stock_card_list_view" model="ir.ui.view">
-            <field name="name">stock.card.list.view</field>
-            <field name="model">ns.stock.card</field>
-            <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="ns_prod"/>
-                     <field name="ns_loc"/>
-                    <field name="with_internal_transfer"/>
-                    <field name="ns_start"/>
-                    <field name="ns_end"/>
-                </tree>
-            </field>
-        </record> -->
-     <!--form view-->
+    <record id="report_stockcard" model="ir.actions.report">
+          <field name="name">Report Stockcard</field>
+          <field name="model">ns.stock.card</field>
+          <field name="report_type">qweb-pdf</field>
+          <field name="report_name">ns_metron_stockcard.stockcard_report_template</field>
+          <field name="report_file">ns_metron_stockcard.stockcard_report_template</field>
+        </record>
+        <template id="stockcard_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                        <t t-foreach="data" t-as="d">
+                            <div class="page">
+                               <p style="text-align:center">METRON ELEKTRONIKA</p>
+                                <strong><p style="text-align:center;">STOCK CARD</p></strong>
+                                <div class="pull-left">
+                                <strong>Produk:</strong><span t-field="o.ns_prod"/><br/>
+                                <strong>UOM:</strong> Unit(S) <br/>
+                                <strong>Location:</strong><span t-field="o.ns_loc"/>
+                                </div>
+                                <div class="pull-right" style="width:200px">
+                                <strong>Start Date:</strong> <span t-field="o.ns_start"/> <br/>
+                                <strong>End Date:</strong> <span t-field="o.ns_end"/> <br/>
+                                <strong>With internal transfer:</strong> <span t-field="o.with_internal_transfer"/> <br/><br/>
+                            </div> 
+                                
+                                <table class="table table-bordered" style="width:100%;table-layout: auto;">
+                                    <tr>
+                                        <th class="text-center" >Date</th>
+                                        <th class="text-center" >Picking</th>
+                                        <th class="text-center" >From - To</th>
+                                        <th class="text-center" >Partner/Internal Trf</th>
+                                        <th class="text-center" >In</th>
+                                        <th class="text-center" >Out</th>
+                                        <th class="text-center" >Balance</th>
+                                    </tr>
+                                    <tr t-foreach="d['stock']" t-as="line" style="page-break-after: always;">
+                                       <td class="text-left" ><t t-esc="line['date']"/></td>
+                                    <td class="text-left" ><t t-esc="line['reference']"/></td>
+                                    <td class="text-left" ><t t-esc="line['from']"/> - <t t-esc="line['to']"/></td>
+                                    <td class="text-left" ><t t-esc="line['partner']"/></td>
+                                    <td class="text-right" ><t t-esc="line['in']"/></td>
+                                    <td class="text-right" ><t t-esc="line['out']"/></td>
+                                    <td class="text-right" ><t t-esc="line['balance']"/></td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+      <!--form view-->
         <record id="stock_card_form_view" model="ir.ui.view">
             <field name="name">stock.card.form.view</field>
             <field name="model">ns.stock.card</field>
@@ -33,10 +71,11 @@
                         <field name="with_internal_transfer" attrs="{'invisible':[('ns_loc', '=', 'select')]}"/>
                         </group>
                         <footer>
-                        <button string="Print" name="" class="oe_highlight"/>
+                        <button string="Print" type="action" name="%(report_stockcard)d" class="oe_highlight"/>
                         <button string="Cancel" special="cancel" class="btn-default"/>
                         </footer>
                     </sheet>
+                     
                 </form>
             </field>
         </record>	

@@ -8,8 +8,7 @@
     'version': '13.0.1.0',
     'depends': ['base', 'stock', ],
     'data': ['security/ir.model.access.csv',
-             'views/ns_stock_card_menus.xml',
-             'views/ns_stock_card_report.xml',
              'views/ns_stock_card_view.xml',
+             'views/ns_stock_card_menus.xml',
              ],
 }
